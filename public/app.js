@@ -31,7 +31,8 @@
  function completed(){return `<section class="card end-card"><span class="complete-icon">✓</span><span class="eyebrow">THANK YOU FOR YOUR TIME</span><h1>感謝您的填答</h1><p>三幅圖表的全部答案已成功儲存。<br>您可以關閉此頁面，無須再次填答。</p><p class="muted">填答編號：${esc(state.id)}</p></section>`;}
  function render(){admin=false;setRoute();document.querySelector('#adminLogin').hidden=state.step!==0;app.innerHTML=state.step===0?intro():state.step===1?demographics():state.step===11?completed():chartPage();bind();if(state.step===0&&!enrollmentOpen){app.querySelectorAll('form button').forEach(b=>b.disabled=true);app.querySelector('#consentError').textContent='目前暫停接受新的填答。';}window.scrollTo(0,0);const h=app.querySelector('h1,h2');if(h){h.tabIndex=-1;h.focus({preventScroll:true});}}
  async function api(path,body){
-  const response=await fetch('/api/'+path,{method:body===undefined?'GET':'POST',headers:body===undefined?{}:{'Content-Type':'application/json'},body:body===undefined?undefined:JSON.stringify(body),credentials:'same-origin',cache:'no-store'});
+  let response;
+  try{response=await fetch('/api/'+path,{method:body===undefined?'GET':'POST',headers:body===undefined?{}:{'Content-Type':'application/json'},body:body===undefined?undefined:JSON.stringify(body),credentials:'same-origin',cache:'no-store',signal:AbortSignal.timeout(25000)});}catch{throw new Error('連線中斷或逾時，請留在本頁重試；重送不會產生第二份答案。');}
   let data;try{data=await response.json();}catch{throw new Error('服務暫時無法連線，請留在本頁重試。');}
   if(!response.ok)throw new Error(data.error||'儲存失敗，請重試。');return data;
  }
