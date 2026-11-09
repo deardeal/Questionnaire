@@ -54,3 +54,11 @@ Netlify 設定：build command `npm run build`，publish `public`，functions `n
 ## 維運
 
 研究開始前確認同意文字、聯絡方式及樣本納入條件。定期分開下載兩種身分的 CSV，放在研究團隊授權的安全位置；資料庫備份透過 Netlify 備份功能管理。暫停／恢復收案只影響新受測者，不修改原有分派或答案。正式資料累積後，資料清理或刪除需另行確認範圍。
+
+## 正式網址
+
+入口：https://infographic-hue-study.netlify.app/
+
+後台：https://infographic-hue-study.netlify.app/admin.html
+
+四個色相路徑為 `/hue-1.html` 至 `/hue-4.html`，由伺服器在基本資料送出後指派；對外只分享入口。GitHub `deardeal/Questionnaire` 的 `main` 推送會觸發 Netlify 自動部署。

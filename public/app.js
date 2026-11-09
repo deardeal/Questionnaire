@@ -90,6 +90,6 @@
  window.addEventListener('popstate',()=>{if(!admin)sync().catch(showFatal);});
  window.addEventListener('pageshow',e=>{if(e.persisted&&!admin)sync().catch(showFatal);});
  function showFatal(e){app.innerHTML=`<section class="card"><h1>暫時無法載入問卷</h1><p>${esc(e.message)}</p><button id="retry" class="primary">重新連線</button></section>`;document.querySelector('#retry').onclick=()=>init();}
- async function init(){try{if(location.pathname==='/admin.html'){try{await showAdmin();}catch{await sync();document.querySelector('#adminLogin').click();}}else await sync();}catch(e){showFatal(e);}}
+ async function init(){try{if(/^\/admin(?:\.html)?\/?$/.test(location.pathname)){try{await showAdmin();}catch{await sync();document.querySelector('#adminLogin').click();}}else await sync();}catch(e){showFatal(e);}}
  init();
 })();
