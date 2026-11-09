@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="資訊圖表閱讀體驗研究問卷正式問卷"><title>資訊圖表閱讀體驗研究｜研究問卷</title><link rel="stylesheet" href="styles.css"></head>
+<body>
+<header class="header"><div class="brand"><span class="brand-icon" aria-hidden="true">▥</span><div>資訊圖表閱讀研究<small>INFOGRAPHIC READING STUDY</small></div></div><button id="adminLogin" class="quiet">研究後台 ↗</button></header>
+<main id="app"></main>
+<footer>資訊圖表色相數量與閱讀體驗研究 <span>正式問卷 · 研究資料僅供學術分析</span></footer>
+<dialog id="loginDialog"><form id="loginForm"><div class="dialog-head"><span class="eyebrow">RESEARCH ADMIN</span><button type="button" class="quiet" data-close="loginDialog" aria-label="關閉登入">✕</button></div><h2>研究後台登入</h2><p class="muted">請使用研究管理帳號登入。</p><label class="field">帳號<input name="username" autocomplete="username" required></label><label class="field">密碼<input name="password" type="password" autocomplete="current-password" required></label><p id="loginError" role="alert" class="error"></p><button class="primary full">登入後台</button></form></dialog>
+<dialog id="imageDialog" class="image-dialog"><div class="image-toolbar"><span>圖表原始比例檢視 · 可捲動閱讀</span><button class="quiet" data-close="imageDialog">關閉 ✕</button></div><div class="image-scroll"><img id="largeImage" alt=""></div></dialog>
+<script src="data.js"></script><script src="app.js"></script>
+</body></html>
